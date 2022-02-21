@@ -10,3 +10,48 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas: "Points Points Points" "Points Points Points" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker";
+}
+
+.Points {
+    grid-area: Points;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#headline {
+    text-align: center;
+    width: 50vw;
+    height: 100%;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 3em;
+    color: #f9dc0f;
+}
+
+#headline h1 {
+    font-family: 'Montserrat', sans-serif;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px #f9dc0f;
+}
+
+.Shop {
+    grid-area: Shop;
+    font-family: 'Playfair Display SC', serif;
+}
+
+.Clicker {
+    grid-area: Clicker;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
