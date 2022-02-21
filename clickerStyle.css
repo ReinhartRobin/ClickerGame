@@ -19,7 +19,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
-    grid-template-areas: "Points Points Points" "Points Points Points" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker";
+    grid-template-areas: "Points Points Points" "Points Points Points" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "Shop Clicker Clicker" "null null null" "null null null";
 }
 
 .Points {
@@ -47,6 +47,95 @@ body {
 .Shop {
     grid-area: Shop;
     font-family: 'Playfair Display SC', serif;
+    background-color: #6024cf63;
+    text-align: center;
+}
+
+.containerShop {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "doubleClick" "addModel" "addSuperModel" "addMegaModel";
+}
+
+#doubleClick {
+    grid-area: doubleClick;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addModel {
+    grid-area: addModel;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addSuperModel {
+    grid-area: addSuperModel;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addMegaModel {
+    grid-area: addMegaModel;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enabledButton {
+    position: relative;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
+    background-color: #6024cf;
+    border: none;
+    color: #f9dc0f;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-overlay {
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #451997;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f9dc0f;
+    font-family: 'Playfair Display SC', serif;
+    transition: opacity .5s;
+}
+
+.btn-overlay:hover {
+    opacity: 0.9;
+}
+
+.disabledButton {
+    position: relative;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
+    background-color: #cccccc;
+    border: none;
+    color: #666666;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .Clicker {
@@ -54,4 +143,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#clickerImage {
+    transition: linear 1s;
+}
+
+#clickerImage:active {
+    transform: scale(0.9);
 }
