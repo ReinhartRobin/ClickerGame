@@ -1,23 +1,30 @@
-let points = 0;
+let points = 8000;
 let value = 1
+var pointContent = document.getElementById("points");
+
+var doubleClickContent = document.getElementById("doubleClick");
+var addModelContent = document.getElementById("addModel");
+var addSuperModelContent = document.getElementById("addSuperModel");
+var addMegaModelContent = document.getElementById("addMegaModel");
+
+checkShop.doubleButton = document.getElementById("doubleButton");
+checkShop.addModelButton = document.getElementById("addModelButton");
+checkShop.addSuperModelButton = document.getElementById("addSuperModelButton");
+checkShop.addMegaModelButton = document.getElementById("addMegaModelButton");
 
 function addPoint() {
     points += value;
-    document.querySelector("#points").textContent = "Points: " + points;
+    pointContent.textContent = "Points: " + points;
     checkShop();
-    let click = document.createElement("p");
-    let clickText = document.createTextNode("+1");
-    click.appendChild(clickText);
-    click.style = "position:absolute; left:" + Math.random() * 90 + "%; top:" + Math.random() * 90 + "%;";
-    document.querySelector(".Clicker").appendChild(click);
-    setTimeout(() => {
-        document.querySelector(".Clicker").removeChild(click);
-    }, 1000);
+    for (let i = 0; i < value; i++) {
+        pointAnimation()
+    }
 }
 
 function checkShop() {
+    console.log(doubleButton);
     if (points >= 500) {
-        document.getElementById("doubleButton").classList.remove("disabledButton");
+        doubleButton.classList.remove("disabledButton");
 
         document.getElementById("doubleClick").innerHTML = `
         <button onclick="doubleClicks()" id="doubleButton"><span class="fa fa-certificate"></span>
@@ -27,13 +34,21 @@ function checkShop() {
                             buy
                         </span></button>
         `;
-        document.getElementById("doubleButton").classList.add("enabledButton");
+        doubleButton.classList.add("enabledButton");
     } else {
-        document.getElementById("doubleButton").classList.add("disabledButton");
+        document.getElementById("doubleClick").innerHTML = `
+        <button onclick="doubleClicks()" id="doubleButton"><span class="fa fa-certificate"></span>
+                        &nbsp;
+                        double clicks
+                        <span class="btn-overlay">
+                        500 Points
+                        </span></button>
+        `;
+        doubleButton.classList.add("disabledButton");
     }
     if (points >= 1000) {
-        document.getElementById("addModelButton").classList.remove("disabledButton");
-        document.getElementById("addModel").innerHTML = `
+        addModelButton.classList.remove("disabledButton");
+        addModelContent.innerHTML = `
         <button onclick="addModel()" id="addModelButton"><span class="fa fa-certificate"></span>
                         &nbsp;
                         add model
@@ -41,14 +56,22 @@ function checkShop() {
                             buy
                         </span></button>
         `;
-        document.getElementById("addModelButton").classList.add("enabledButton");
+        addModelButton.classList.add("enabledButton");
     } else {
-        document.getElementById("addModelButton").classList.add("disabledButton");
+        addModelContent.innerHTML = `
+        <button onclick="addModel()" id="addModelButton"><span class="fa fa-certificate"></span>
+                        &nbsp;
+                        add model
+                        <span class="btn-overlay">
+                        1000 Points
+                        </span></button>
+        `;
+        addModelButton.classList.add("disabledButton");
     }
 
     if (points >= 2500) {
-        document.getElementById("addSuperModelButton").classList.remove("disabledButton");
-        document.getElementById("addSuperModel").innerHTML = `
+        addSuperModelButton.classList.remove("disabledButton");
+        addSuperModelContent.innerHTML = `
         <button onclick="addSuperModel()" id="addSuperModelButton"><span class="fa fa-certificate"></span>
                         &nbsp;
                         add supermodel
@@ -56,14 +79,22 @@ function checkShop() {
                         buy
                         </span></button>
         `;
-        document.getElementById("addSuperModelButton").classList.add("enabledButton");
+        addSuperModelButton.classList.add("enabledButton");
     } else {
-        document.getElementById("addSuperModelButton").classList.add("disabledButton");
+        addSuperModelContent.innerHTML = `
+        <button onclick="addSuperModel()" id="addSuperModelButton"><span class="fa fa-certificate"></span>
+                        &nbsp;
+                        add supermodel
+                        <span class="btn-overlay">
+                        2500 Points
+                        </span></button>
+        `;
+        addSuperModelButton.classList.add("disabledButton");
     }
 
     if (points >= 5000) {
-        document.getElementById("addMegaModelButton").classList.remove("disabledButton");
-        document.getElementById("addMegaModel").innerHTML = `
+        addMegaModelButton.classList.remove("disabledButton");
+        addMegaModelContent.innerHTML = `
         <button onclick="addMegaModel()" id="addMegaModelButton"><span class="fa fa-certificate"></span>
                         &nbsp;
                         add megamodel
@@ -71,45 +102,63 @@ function checkShop() {
                         buy
                         </span></button>
         `;
-        document.getElementById("addMegaModelButton").classList.add("enabledButton");
+        addMegaModelButton.classList.add("enabledButton");
     } else {
-        document.getElementById("addMegaModelButton").classList.add("disabledButton");
+        addMegaModelContent.innerHTML = `
+        <button onclick="addMegaModel()" id="addMegaModelButton"><span class="fa fa-certificate"></span>
+                        &nbsp;
+                        add megamodel
+                        <span class="btn-overlay">
+                        5000 Points
+                        </span></button>
+        `;
+        addMegaModelButton.classList.add("disabledButton");
     }
 
 }
 
 function doubleClicks() {
-    if (document.getElementById("doubleButton").className === "enabledButton") {
+    if (doubleButton.className === "enabledButton") {
         value === 1 ? value++ : value *= 2;
         buy(500);
     }
 }
 
 function addModel() {
-    if (document.getElementById("addModelButton").className === "enabledButton") {
+    if (addModelButton.className === "enabledButton") {
         setInterval(function() {
             points++;
-            document.querySelector("#points").textContent = "Points: " + points;
+            pointContent.textContent = "Points: " + points;
+            pointAnimation();
+            checkShop();
         }, 1000);
         buy(1000);
     }
 }
 
 function addSuperModel() {
-    if (document.getElementById("addModelButton").className === "enabledButton") {
+    if (addSuperModelButton.className === "enabledButton") {
         setInterval(function() {
             points += 2;
-            document.querySelector("#points").textContent = "Points: " + points;
+            pointContent.textContent = "Points: " + points;
+            for (let i = 0; i < 2; i++) {
+                pointAnimation();
+            }
+            checkShop();
         }, 1000);
         buy(2500);
     }
 }
 
 function addMegaModel() {
-    if (document.getElementById("addModelButton").className === "enabledButton") {
+    if (addMegaModelButton.className === "enabledButton") {
         setInterval(function() {
             points += 5;
-            document.querySelector("#points").textContent = "Points: " + points;
+            pointContent.textContent = "Points: " + points;
+            for (let i = 0; i < 5; i++) {
+                pointAnimation();
+            }
+            checkShop();
         }, 1000);
         buy(5000);
     }
@@ -117,6 +166,17 @@ function addMegaModel() {
 
 function buy(costs) {
     points -= costs;
-    document.querySelector("#points").textContent = "Points: " + points;
+    pointContent.textContent = "Points: " + points;
     checkShop();
+}
+
+function pointAnimation() {
+    let click = document.createElement("p");
+    let clickText = document.createTextNode("★");
+    click.appendChild(clickText);
+    click.style = "position:absolute; left:" + Math.random() * 90 + "%; top:" + Math.random() * 90 + "%;";
+    document.querySelector(".Clicker").appendChild(click);
+    setTimeout(() => {
+        document.querySelector(".Clicker").removeChild(click);
+    }, 1000);
 }

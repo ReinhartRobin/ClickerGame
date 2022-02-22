@@ -103,6 +103,20 @@ body {
     cursor: pointer;
 }
 
+.disabledButton {
+    position: relative;
+    font-family: 'Playfair Display SC', serif;
+    font-weight: bold;
+    background-color: #cccccc;
+    border: none;
+    color: #666666;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .btn-overlay {
     position: absolute;
     padding: 0;
@@ -122,20 +136,6 @@ body {
 
 .btn-overlay:hover {
     opacity: 0.9;
-}
-
-.disabledButton {
-    position: relative;
-    font-family: 'Playfair Display SC', serif;
-    font-weight: bold;
-    background-color: #cccccc;
-    border: none;
-    color: #666666;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
 }
 
 .Clicker {
@@ -160,5 +160,5 @@ body {
     font-family: 'Playfair Display SC', serif;
     color: #f9dc0f;
     font-size: 2em;
-    z-index: 99;
+    z-index: -5;
 }
