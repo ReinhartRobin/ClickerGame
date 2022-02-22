@@ -139,6 +139,7 @@ body {
 }
 
 .Clicker {
+    position: relative;
     grid-area: Clicker;
     display: flex;
     justify-content: center;
@@ -151,4 +152,13 @@ body {
 
 #clickerImage:active {
     transform: scale(0.9);
+}
+
+.Clicker p {
+    position: absolute;
+    padding: 0;
+    font-family: 'Playfair Display SC', serif;
+    color: #f9dc0f;
+    font-size: 2em;
+    z-index: 99;
 }
