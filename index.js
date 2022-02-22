@@ -1,4 +1,4 @@
-let points = 8000;
+let points = 0;
 let value = 1
 var pointContent = document.getElementById("points");
 
